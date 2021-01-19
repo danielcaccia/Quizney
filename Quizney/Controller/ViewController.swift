@@ -13,24 +13,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
     var quizneyBrain = QuizneyBrain()
-    var quiz: [Question] = []
     var continueQuiz = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initialSetting()
+        setButtonAspect()
+        initialSettings()
     }
 
     @IBAction func startButtonPressed(_ sender: UIButton) {
-        quiz = quizneyBrain.generateQuiz()
+        quizneyBrain.generateQuiz()
         
-        updateUI()
+        startQuiz()
+        updateUI(originIsAnswer: false)
+    }
+    
+    @IBAction func skipButtonPressed(_ sender: UIButton) {
+        showHideInfo()
+        
+        continueQuiz = quizneyBrain.hasNextQuestion()
+        
+        if continueQuiz {
+            updateUI(originIsAnswer: false)
+        } else {
+            finishQuiz()
+        }
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -43,22 +57,36 @@ class ViewController: UIViewController {
             sender.backgroundColor = #colorLiteral(red: 0.8716338873, green: 0.3191627562, blue: 0.3489302397, alpha: 1)
         }
         
-        continueQuiz = quizneyBrain.hasNextQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(showHideInfo), userInfo: nil, repeats: false)
         
-        if continueQuiz {
-            Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
-        } else {
-            Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(finishQuiz), userInfo: nil, repeats: false)
-        }
-        
+        updateUI(originIsAnswer: true)
     }
     
-    @objc func updateUI() {
+    func updateUI(originIsAnswer: Bool) {
         scoreLabel.text = "Score: \(quizneyBrain.getScore())."
-        textLabel.text = quizneyBrain.getQuestionText(quiz)
         progressBar.progress = quizneyBrain.getProgress()
         
-        setButtonAspect()
+        if originIsAnswer {
+            textLabel.text = quizneyBrain.getCurious()
+        } else {
+            textLabel.text = quizneyBrain.getQuestionText()
+        }
+    }
+    
+    @objc func showHideInfo() {
+        skipButton.isHidden = !skipButton.isHidden
+        trueButton.isEnabled = !trueButton.isEnabled
+        falseButton.isEnabled = !falseButton.isEnabled
+        
+        trueButton.backgroundColor = .orange
+        falseButton.backgroundColor = .orange
+    }
+    
+    func startQuiz() {
+        startButton.isHidden = true
+        trueButton.isHidden = false
+        falseButton.isHidden = false
+        progressBar.isHidden = false
     }
     
     @objc func finishQuiz() {
@@ -66,42 +94,39 @@ class ViewController: UIViewController {
         textLabel.text = "Your final score is: \(quizneyBrain.getScore())!"
         progressBar.progress = quizneyBrain.getProgress()
         
-        initialSetting()
+        initialSettings()
     }
     
-    func initialSetting() {
-        startButton.layer.cornerRadius = 10
-        startButton.clipsToBounds = true
-        startButton.backgroundColor = .orange
-        startButton.alpha = 1
-        startButton.isEnabled = true
+}
+
+extension ViewController {
+    
+    func initialSettings() {
+        startButton.isHidden = false
+        skipButton.isHidden = true
+        trueButton.isHidden = true
+        falseButton.isHidden = true
+        progressBar.isHidden = true
         
-        trueButton.alpha = 0
-        trueButton.isEnabled = false
-        
-        falseButton.alpha = 0
-        falseButton.isEnabled = false
-        
-        progressBar.alpha = 0
+        scoreLabel.text = ""
     }
     
     func setButtonAspect() {
-        startButton.alpha = 0
-        startButton.isEnabled = false
+        startButton.layer.cornerRadius = 10
+        startButton.clipsToBounds = true
+        startButton.backgroundColor = .orange
+        
+        skipButton.layer.cornerRadius = 10
+        skipButton.clipsToBounds = true
+        skipButton.backgroundColor = .orange
         
         trueButton.layer.cornerRadius = 10
         trueButton.clipsToBounds = true
         trueButton.backgroundColor = .orange
-        trueButton.alpha = 1
-        trueButton.isEnabled = true
         
         falseButton.layer.cornerRadius = 10
         falseButton.clipsToBounds = true
         falseButton.backgroundColor = .orange
-        falseButton.alpha = 1
-        falseButton.isEnabled = true
-        
-        progressBar.alpha = 1
     }
     
 }

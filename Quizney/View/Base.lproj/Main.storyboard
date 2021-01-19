@@ -34,7 +34,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOo-JO-KmL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOo-JO-KmL">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="691"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -54,14 +54,28 @@
                                                     <action selector="startButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbv-jS-5B3"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Us-yX-fEr">
+                                                <rect key="frame" x="120" y="641" width="150" height="50"/>
+                                                <color key="backgroundColor" red="0.84313725490000002" green="0.85098039219999999" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="COa-3Q-o4I"/>
+                                                    <constraint firstAttribute="height" constant="50" id="I6y-tq-S1t"/>
+                                                </constraints>
+                                                <state key="normal" title="Skip"/>
+                                                <connections>
+                                                    <action selector="skipButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b0M-2u-hJ5"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="bKg-L8-51o" firstAttribute="leading" secondItem="4WH-es-6jg" secondAttribute="leading" id="3cY-IO-yfN"/>
                                             <constraint firstItem="rgn-bP-cSV" firstAttribute="centerX" secondItem="4WH-es-6jg" secondAttribute="centerX" id="7q9-hu-V1t"/>
                                             <constraint firstAttribute="trailing" secondItem="bKg-L8-51o" secondAttribute="trailing" id="9gU-1v-LLR"/>
+                                            <constraint firstAttribute="bottom" secondItem="8Us-yX-fEr" secondAttribute="bottom" id="C1e-di-Gqh"/>
                                             <constraint firstItem="rgn-bP-cSV" firstAttribute="centerY" secondItem="4WH-es-6jg" secondAttribute="centerY" id="Nlr-4k-Gjn"/>
                                             <constraint firstItem="nOo-JO-KmL" firstAttribute="top" secondItem="bKg-L8-51o" secondAttribute="top" id="Rdl-dh-6vB"/>
                                             <constraint firstAttribute="bottom" secondItem="nOo-JO-KmL" secondAttribute="bottom" id="ZeT-vc-zY1"/>
+                                            <constraint firstItem="8Us-yX-fEr" firstAttribute="centerX" secondItem="4WH-es-6jg" secondAttribute="centerX" id="bed-AN-Kq2"/>
                                             <constraint firstAttribute="trailing" secondItem="nOo-JO-KmL" secondAttribute="trailing" id="itW-fX-kCw"/>
                                             <constraint firstItem="nOo-JO-KmL" firstAttribute="leading" secondItem="4WH-es-6jg" secondAttribute="leading" id="x4h-bT-lw2"/>
                                             <constraint firstItem="bKg-L8-51o" firstAttribute="top" secondItem="4WH-es-6jg" secondAttribute="top" id="xe6-lY-Y3l"/>
@@ -143,6 +157,7 @@
                         <outlet property="falseButton" destination="3dS-wb-JMH" id="aA0-kq-TyN"/>
                         <outlet property="progressBar" destination="6lH-Vo-HIm" id="nVZ-We-KZl"/>
                         <outlet property="scoreLabel" destination="bKg-L8-51o" id="r17-vc-jjh"/>
+                        <outlet property="skipButton" destination="8Us-yX-fEr" id="rpA-Z0-Z0e"/>
                         <outlet property="startButton" destination="rgn-bP-cSV" id="gV0-rv-4zm"/>
                         <outlet property="textLabel" destination="nOo-JO-KmL" id="ucK-dk-wee"/>
                         <outlet property="trueButton" destination="A3e-DZ-4DF" id="D4h-dW-oAB"/>

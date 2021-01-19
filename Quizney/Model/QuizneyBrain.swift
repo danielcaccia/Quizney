@@ -101,23 +101,24 @@ struct QuizneyBrain {
                  a: "True",
                  c: "Tower of Terror guests may feel like they're free-falling, but they're not! They’re being pulled. Ride technology pulls the elevator car down faster than gravity, which is what results in that amazing butts-off-the-seat levitation effect.")
     ]
+    var quiz: [Question] = []
     var score = 0
     var questionNumber = 0
     let totalQuestions = 10
     
-    func generateQuiz() -> [Question] {
-        var quiz = questions
+    mutating func generateQuiz() {
+        questionNumber = 0
+        score = 0
+        quiz = questions
         quiz.shuffle()
         
         while quiz.count > totalQuestions {
             quiz.remove(at: 0)
         }
-        
-        return quiz
     }
     
     mutating func checkAnswer(with userAnswer: String) -> Bool {
-        if userAnswer == questions[questionNumber].answer {
+        if userAnswer == quiz[questionNumber].answer {
             score += 1
             
             return true
@@ -126,30 +127,32 @@ struct QuizneyBrain {
         }
     }
     
-    mutating func getQuestionText(_ quiz: [Question]) -> String {
-        let text = quiz[questionNumber].text
-                
-        return text
-    }
-    
-    func getScore() -> Int {
-        return score
-    }
-    
-    func getProgress() -> Float {
-        return Float(questionNumber + 1) / Float(totalQuestions)
-    }
-    
     mutating func hasNextQuestion() -> Bool {
         if questionNumber < totalQuestions - 1 {
             questionNumber += 1
             
             return true
         } else {
-            questionNumber = 0
-            score = 0
-            
             return false
         }
     }
+    
+    func getCurious() -> String {
+        return quiz[questionNumber].curiosity
+    }
+    
+    func getScore() -> Int {
+        return score
+    }
+    
+    mutating func getQuestionText() -> String {
+        let text = quiz[questionNumber].text
+                
+        return text
+    }
+        
+    func getProgress() -> Float {
+        return Float(questionNumber + 1) / Float(totalQuestions)
+    }
+    
 }
