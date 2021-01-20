@@ -51,11 +51,7 @@ class ViewController: UIViewController {
         let userAnswer = sender.currentTitle!
         let isAnswerCorrect = quizneyBrain.checkAnswer(with: userAnswer)
 
-        if isAnswerCorrect {
-            sender.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        } else {
-            sender.backgroundColor = #colorLiteral(red: 0.8716338873, green: 0.3191627562, blue: 0.3489302397, alpha: 1)
-        }
+        sender.backgroundColor = (isAnswerCorrect) ? #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1) : #colorLiteral(red: 0.8716338873, green: 0.3191627562, blue: 0.3489302397, alpha: 1)
         
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(showHideInfo), userInfo: nil, repeats: false)
         
@@ -66,12 +62,7 @@ class ViewController: UIViewController {
         scoreLabel.text = "Score: \(quizneyBrain.getScore())."
         progressBar.progress = quizneyBrain.getProgress()
         backgroundImage.image = UIImage(named: "\(quizneyBrain.getImage()).png")
-        
-        if originIsAnswer {
-            textLabel.text = quizneyBrain.getCurious()
-        } else {
-            textLabel.text = quizneyBrain.getQuestionText()
-        }
+        textLabel.text = (originIsAnswer) ? quizneyBrain.getCurious() : quizneyBrain.getQuestionText()
     }
     
     @objc func showHideInfo() {
@@ -79,8 +70,8 @@ class ViewController: UIViewController {
         trueButton.isEnabled = !trueButton.isEnabled
         falseButton.isEnabled = !falseButton.isEnabled
         
-        trueButton.backgroundColor = .orange
-        falseButton.backgroundColor = .orange
+        trueButton.backgroundColor = #colorLiteral(red: 0.151628226, green: 0.3118568361, blue: 0.4674137235, alpha: 1)
+        falseButton.backgroundColor = #colorLiteral(red: 0.151628226, green: 0.3118568361, blue: 0.4674137235, alpha: 1)
     }
     
     func startQuiz() {
@@ -114,21 +105,16 @@ extension ViewController {
     }
     
     func setButtonAspect() {
-        startButton.layer.cornerRadius = 10
-        startButton.clipsToBounds = true
-        startButton.backgroundColor = .orange
-        
-        skipButton.layer.cornerRadius = 10
-        skipButton.clipsToBounds = true
-        skipButton.backgroundColor = .orange
-        
-        trueButton.layer.cornerRadius = 10
-        trueButton.clipsToBounds = true
-        trueButton.backgroundColor = .orange
-        
-        falseButton.layer.cornerRadius = 10
-        falseButton.clipsToBounds = true
-        falseButton.backgroundColor = .orange
+        designButton(button: startButton)
+        designButton(button: skipButton)
+        designButton(button: trueButton)
+        designButton(button: falseButton)
+    }
+    
+    func designButton(button: UIButton) {
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        button.backgroundColor = #colorLiteral(red: 0.151628226, green: 0.3118568361, blue: 0.4674137235, alpha: 1)
     }
     
 }

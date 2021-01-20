@@ -92,7 +92,7 @@ struct QuizneyBrain {
                  c: "Originally intended as an apartment for Walt Disney's family, the 650-square-foot space is only accessible by a secret elevator. But you can't pay to book a stay — it can only be used for contest winners and other promotions. In Disneyland, there's a similar room above the Pirates of the Caribbean exhibit."),
         Question(id: 21,
                  q: "Matterhorn Mountain has a soccer court.",
-                 a: "True",
+                 a: "False",
                  c: "Although there's a small basketball half-court. Costumed employees used to climb or rappel the sides of the mountain, and so the attic-like space was used as a resting and preparation area. One of the climbers once brought in and installed a basketball hoop to keep them entertained on breaks."),
         Question(id: 22,
                  q: "The Disney World’s Railroad uses a replica of an actual train from the 1910s.",
