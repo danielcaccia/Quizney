@@ -65,6 +65,7 @@ class ViewController: UIViewController {
     func updateUI(originIsAnswer: Bool) {
         scoreLabel.text = "Score: \(quizneyBrain.getScore())."
         progressBar.progress = quizneyBrain.getProgress()
+        backgroundImage.image = UIImage(named: "\(quizneyBrain.getImage()).png")
         
         if originIsAnswer {
             textLabel.text = quizneyBrain.getCurious()
@@ -93,6 +94,7 @@ class ViewController: UIViewController {
         scoreLabel.text = ""
         textLabel.text = "Your final score is: \(quizneyBrain.getScore())!"
         progressBar.progress = quizneyBrain.getProgress()
+        backgroundImage.image = UIImage(named: "fireworks.png")
         
         initialSettings()
     }

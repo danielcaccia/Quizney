@@ -9,11 +9,13 @@ import Foundation
 
 struct Question {
     
+    let id: Int
     let text: String
     let answer: String
     let curiosity: String
     
-    init(q: String, a: String, c: String) {
+    init(id: Int, q: String, a: String, c: String) {
+        self.id = id
         text = q
         answer = a
         curiosity = c
