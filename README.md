@@ -7,5 +7,5 @@ It has an advanced and responsive UI. Written applying MVC design pattern, its u
 
 Below there are some screenshots of the main screen and base idea of what it is about:
 
-<img height="500" alt="Main Screen" src="https://github.com/danielcaccia/Quizney/blob/master/screenshot1.png?raw=true">.<img height="500" alt="The App" src="https://github.com/danielcaccia/Quizney/blob/master/screenshot2.png?raw=true"><br/>
-<img width="500" alt="The App" src="https://github.com/danielcaccia/Quizney/blob/master/screenshot3.png?raw=true">
+<img height="500" alt="Main Screen" src="https://github.com/danielcaccia/Commons/blob/master/Quizney/screenshot1.png?raw=true">.<img height="500" alt="The App" src="https://github.com/danielcaccia/Commons/blob/master/Quizney/screenshot2.png?raw=true"><br/>
+<img width="500" alt="The App" src="https://github.com/danielcaccia/Commons/blob/master/Quizney/screenshot3.png?raw=true">
